@@ -55,22 +55,27 @@ class LaporanController extends Controller
     }
 
     public function downloadPDF(Request $request)
-    {
-        $tanggal = $request->input('tanggal');
-        $laporans = Laporan::with('produk');
+{
+    $tanggal = $request->input('tanggal');
+    $laporans = Laporan::with('produk');
 
-        // Jika ada filter tanggal, gunakan whereDate
-        if ($tanggal) {
-            $laporans->whereDate('created_at', $tanggal);
-        }
-
-        $laporans = $laporans->get(); // Ambil data dari database
-
-        // Kirim data ke view PDF
-        $pdf = Pdf::loadView('laporan.pdf', compact('laporans', 'tanggal'));
-
-        return $pdf->download('laporan_penjualan.pdf');
+    // Jika ada filter tanggal, gunakan whereDate
+    if ($tanggal) {
+        $laporans->whereDate('created_at', $tanggal);
     }
+
+    $laporans = $laporans->get(); // Ambil data dari database
+
+    // Debugging jika data kosong
+    if ($laporans->isEmpty()) {
+        return back()->with('error', 'Tidak ada data laporan untuk tanggal ini.');
+    }
+
+    // Kirim data ke view PDF
+    $pdf = Pdf::loadView('laporan.pdf', compact('laporans', 'tanggal'));
+
+    return $pdf->download('laporan_penjualan.pdf');
+}
 
 
     /**

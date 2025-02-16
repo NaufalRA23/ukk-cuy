@@ -40,6 +40,10 @@
 <body>
     <h2 style="text-align: center;">Laporan Penjualan</h2>
 
+    @if(isset($tanggal) && $tanggal != null)
+    <p style="text-align: left; margin-top: -10px;"><strong>Tanggal: {{ \Carbon\Carbon::parse($tanggal)->format('d-m-Y') }}</strong></p>
+    @endif
+
     @if(count($groupedLaporan) > 0)
         <table>
             <thead>
@@ -75,3 +79,4 @@
     @endif
 </body>
 </html>
+

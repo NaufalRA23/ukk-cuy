@@ -173,44 +173,45 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-3">
                         <input type="date" id="filterTanggal" class="form-control w-25" placeholder="Filter Tanggal">
-<!-- Tombol untuk memicu modal -->
-<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#filterModal">
-    Download PDF
-</button>
 
-<!-- Modal Filter Tanggal -->
-<div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="filterModalLabel">Filter Laporan Penjualan</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="downloadForm">
-                    <label for="tanggal">Pilih Tanggal:</label>
-                    <input type="date" id="tanggal" name="tanggal" class="form-control">
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-danger" id="downloadPDF">Download</button>
+    <!-- Tombol untuk memicu modal -->
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#filterModal">
+        Download PDF
+    </button>
+
+    <!-- Modal Filter Tanggal -->
+    <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="filterModalLabel">Filter Laporan Penjualan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="downloadForm">
+                        <label for="tanggal">Pilih Tanggal:</label>
+                        <input type="date" id="tanggal" name="tanggal" class="form-control">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-danger" id="downloadPDF">Download</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<script>
-    document.getElementById('downloadPDF').addEventListener('click', function() {
-        var tanggal = document.getElementById('tanggal').value;
-        var url = "{{ route('laporan.download') }}";
+    <script>
+        document.getElementById('downloadPDF').addEventListener('click', function() {
+            var tanggal = document.getElementById('tanggal').value;
+            var url = "{{ route('laporan.download') }}";
 
-        if (tanggal) {
-            url += "?tanggal=" + tanggal;
-        }
+            if (tanggal) {
+                url += "?tanggal=" + tanggal;
+            }
 
-        window.location.href = url; // Redirect ke route download dengan filter
-    });
+            window.location.href = url; // Redirect ke route download dengan filter
+        });
     </script>
 
                     </div>
