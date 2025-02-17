@@ -24,4 +24,9 @@ class produk extends Model
     {
         return $this->hasMany(Laporan::class);
     }
+
+    public function kategoti()
+    {
+        return $this->belongsTo(Kategori::class);
+    }
 }

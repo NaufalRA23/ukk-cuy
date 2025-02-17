@@ -9,7 +9,7 @@
                     <div class="d-flex justify-content-between mb-3">
                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahPenjualanModal">Tambah Penjualan</button>
                         <input type="text" id="searchInput" class="form-control w-25" placeholder="Cari No. Transaksi atau Nama User...">
-                        {{-- <input type="date" id="dateFilter" class="form-control w-25"> --}}
+                        <input type="date" id="dateFilter" class="form-control w-25">
                     </div>
                     <div class="table-responsive p-0">
                         <table id="dataTable" class="table align-items-center mb-0 table-striped table-bordered table-hover">

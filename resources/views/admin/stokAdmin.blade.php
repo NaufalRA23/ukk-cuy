@@ -9,6 +9,8 @@
     <h2 class="text-center mb-4"> </h2>
     <div class="d-flex justify-content-between mb-3">
         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createProductModal">Tambah Produk</button>
+        <a href="{{ route('index.kategori') }}" class="btn btn-success">Kelola Kategori</a>
+
         <div class="d-flex ml-auto gap-2">
             <input type="text" id="searchInput" class="form-control w-55" placeholder="Cari Nama Produk...">
             {{-- <button class="btn btn-secondary" id="sortStockBtn" onclick="sortTableByStock()">
@@ -28,11 +30,12 @@
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nama Produk</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Deskripsi</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Merek</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Kategori</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Harga Beli</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Harga Jual</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Stok</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Gambar</th>
-                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Aksi</th>  
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Aksi</th>
                         </tr>
                     </thead>
                     <tbody id="productTableBody">
@@ -42,6 +45,7 @@
                                 <td class="text-left">{{ $product->name }}</td>
                                 <td class="text-left">{{ Str::limit($product->deskripsi, 25, '...') }}</td>
                                 <td class="text-left">{{ $product->jenis }}</td>
+                                <td class="text-left">{{ $product->kategori_id }}</td>
                                 <td class="text-left">{{ $product->harga_beli }}</td>
                                 <td class="text-left">{{ $product->harga_jual }}</td>
                                 <td class="text-left">{{ $product->stok }}</td>

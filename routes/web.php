@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KasirController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PenjualanController;
@@ -30,6 +31,13 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/products/{id}/edit', [ProdukController::class, 'edit'])->name('products.edit');
     Route::put('/products/{id}', [ProdukController::class, 'update'])->name('products.update');
     Route::delete('/products/{id}', [ProdukController::class, 'destroy'])->name('products.destroy');
+
+    Route::get('/kategori', [KategoriController::class, 'index'])->name('index.kategori');
+    Route::post('/kategori', [KategoriController::class, 'store']);
+    Route::get('/kategori/{id}/edit', [KategoriController::class, 'edit']);
+    Route::put('/kategori/{id}', [KategoriController::class, 'update']);
+    Route::delete('/kategori/{id}', [KategoriController::class, 'destroy']);
+
 });
 
 Route::middleware(['auth', 'role:kasir'])->group(function () {
